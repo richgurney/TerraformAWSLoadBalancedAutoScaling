@@ -48,7 +48,7 @@ module "app-tier" {
   route_table_id = "${aws_route_table.r.id}"
   cidr_block = "10.22.1.0/24"
   user_data = "${data.template_file.app_init.rendered}"
-  ami_id = "ami-24b0db5d"
+  ami_id = "ami-49a1e630"
   map_public_ip_on_launch = true
 
   ingress = [{
@@ -111,7 +111,7 @@ resource "aws_elb" "richard-elb" {
 
 resource "aws_launch_configuration" "rich-lc" {
   name   = "richard-lc"
-  image_id      = "ami-24b0db5d"
+  image_id      = "ami-49a1e630"
   instance_type = "t2.micro"
   user_data     = "${data.template_file.app_init.rendered}"
   security_groups = ["${module.app-tier.sec_group}"]
